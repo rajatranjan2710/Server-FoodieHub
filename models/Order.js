@@ -1,0 +1,112 @@
+import mongoose from "mongoose";
+
+const schema = new mongoose.Schema({
+    shipping_Info :{
+        hNo:{
+            type:String,
+            required:true
+        },
+        city:{
+            type:String,
+            required:true
+        },
+        state:{
+            type:String,
+            required:true
+        },
+        country:{
+            type:String,
+            required:true
+        },
+        pincode:{
+            type:Number,
+            required:true
+        },
+        phoneNo:{
+            type:Number,
+            required:true
+        }
+    },
+    order_Items:{
+        burgerWithCoke:{
+            price:{
+                type:Number,
+                required:true
+            },
+            quantity:{
+                type:Number,
+                required:true
+            },
+        },
+        vegPizza:{
+            price:{
+                type:Number,
+                required:true
+            },
+            quantity:{
+                type:Number,
+                required:true
+            },
+        },
+        frenchFries:{
+            price:{
+                type:Number,
+                required:true
+            },
+            quantity:{
+                type:Number,
+                required:true
+            },
+        },
+    },
+    user:{
+        type:mongoose.Schema.ObjectId,
+        ref: "User",
+        required:true
+    },
+
+    payment_Method:{
+        type:String,
+        enum:["COD","Online"],
+        default:"COD"
+    },
+    payment_Info:{
+        type:mongoose.Schema.ObjectId,
+        ref:"Payment",
+    },
+    paid_At:{
+        type:Date,
+    },
+    items_Price:{
+        type:Number,
+        default:0,
+    },
+    shipping_Charges:{
+        type:Number,
+        default:0,
+    },
+    tax:{
+        type:Number,
+        default:0,
+    },
+    total_Amount:{
+        type:Number,
+        default:0,
+    },
+    order_Status:{
+        type:String,
+        enum:["Preparing","Shipped","Delivered"]
+        ,default:"Preparing"
+    },
+    delivered_At:{
+        type:Date
+    },
+    order_Created_At:{
+        type:Date,
+        default:Date.now,
+    }
+    
+
+})
+
+export const OrderDB = mongoose.model("Order",schema)
