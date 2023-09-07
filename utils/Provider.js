@@ -4,7 +4,7 @@ import { UserDb } from "../models/User.js"
 
 export const connectPassport =()=>{
     passport.use(new GoogleStrategy({
-        clientID: process.env.CLIENT_ID,
+        clientID: "783062772748-694lbkq3mempfge1ocf7pntqnv343gpm.apps.googleusercontent.com",
         clientSecret: process.env.CLIENT_SECRET,
         callbackURL: "http://localhost:8000/api/v1/login"
     },async function(accessToken,refreshToken,profile,done){
