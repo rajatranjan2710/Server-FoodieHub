@@ -11,7 +11,8 @@ const router = express.Router();
 router.get("/googlelogin", passport.authenticate("google", {
     scope: ["profile"]
 
-}))
+}),
+console.log("working"))
 
 router.get("/login", passport.authenticate("google", {
     successRedirect: process.env.FRONTEND_URL
