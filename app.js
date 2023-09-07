@@ -5,6 +5,7 @@ import session from "express-session";
 import passport, { Passport } from "passport";
 import cookieParser from "cookie-parser";
 import cors from "cors";
+import { MemoryStore } from "express-session";
 
 const app = express();
 export default app;
@@ -20,7 +21,11 @@ dotenv.config(
 app.use(
     session(
         {
-            secret: process.env.SESSION_SECRET,
+            cookie: { maxAge: 86400000 },
+            secret: "keyyyeyeye",
+            store: new MemoryStore({
+                checkPeriod: 86400000 // prune expired entries every 24h
+              }),
             resave: false,
             saveUninitialized: false,
             cookie: {
