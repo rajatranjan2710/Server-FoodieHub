@@ -4,7 +4,7 @@ import { connectPassport } from "./utils/Provider.js";
 import session from "express-session";
 import passport, { Passport } from "passport";
 import cookieParser from "cookie-parser";
-import cors from "cors";
+// import cors from "cors";
 import { MemoryStore } from "express-session";
 
 const app = express();
@@ -40,16 +40,16 @@ app.use(express.json());
 app.use(express.urlencoded({
     extended: true,
 }))
-app.use(cors({
-    credentials: true,
-    origin: process.env.FRONTEND_URL,
-    methods: ["GET", "POST", "PUT", "DELETE"]
+// app.use(cors({
+//     credentials: true,
+//     origin: process.env.FRONTEND_URL,
+//     methods: ["GET", "POST", "PUT", "DELETE"]
 
-}))
+// }))
 
 app.use(passport.initialize());
 app.use(passport.session());
-app.enable("trust proxy");
+// app.enable("trust proxy");
 
 connectPassport();
 
