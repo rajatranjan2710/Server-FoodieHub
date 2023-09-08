@@ -6,7 +6,7 @@ export const connectPassport =()=>{
     passport.use(new GoogleStrategy({
         clientID: "783062772748-694lbkq3mempfge1ocf7pntqnv343gpm.apps.googleusercontent.com",
         clientSecret: "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",
-        callbackURL: "https://server-one-phi.vercel.app/api/v1/login"
+        callbackURL: "https://server1-alpha.vercel.app/api/v1/login"
     },async function(accessToken,refreshToken,profile,done){
         //database
         const user = await UserDb.findOne({

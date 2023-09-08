@@ -40,16 +40,16 @@ app.use(express.json());
 app.use(express.urlencoded({
     extended: true,
 }))
-// app.use(cors({
-//     credentials: true,
-//     origin: process.env.FRONTEND_URL,
-//     methods: ["GET", "POST", "PUT", "DELETE"]
+app.use(cors({
+    credentials: true,
+    origin: process.env.FRONTEND_URL,
+    methods: ["GET", "POST", "PUT", "DELETE"]
 
-// }))
+}))
 
 app.use(passport.initialize());
 app.use(passport.session());
-// app.enable("trust proxy");
+app.enable("trust proxy");
 
 connectPassport();
 
